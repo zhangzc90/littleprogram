@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/collect/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我的名片",
+    "navigationBarTextStyle": "black"
+  },
+
+  "tabBar": {
+    "color":"#000000",
+    "selectedColor":"#1AAD16",
+    "backgroundColor":"#ffffff",
+    "position":"bottom",
+    "borderStyle":"white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的名片",
+        "iconPath": "pages/image/card.png",
+        "selectedIconPath": "pages/image/cardSelected.png"
+      },
+      {
+        "pagePath": "pages/collect/index",
+        "text": "名片夹",
+        "iconPath": "pages/image/collect.png",
+        "selectedIconPath": "pages/image/collectSelected.png"
+      }
+    ]
+  }
+}
