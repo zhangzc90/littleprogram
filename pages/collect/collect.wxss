@@ -1,0 +1,32 @@
+/* index.wxss */
+page{
+  font-family: "微软雅黑";
+  font-size: 20rpx;
+  background: #f2f2f2;
+}
+.container{
+  padding: 20rpx 0;
+}
+.item{
+  display: flex;
+  background: #ffffff;
+  padding: 15rpx 30rpx;
+  margin-bottom: 8rpx;
+}
+.headimg image{
+  width: 80rpx;
+  height:80rpx;
+  border-radius: 50%;
+}
+
+.detail{
+  margin-left: 30rpx;
+  line-height: 1.8;
+  flex: 1;
+}
+.detail .name{
+  font-size: 25rpx;
+}
+.detail .company{
+  font-size: 20rpx;
+}

@@ -22,8 +22,42 @@ App({
       })
     }
   },
+  //获取用户的登录状态 
+  userLogin:function(){
+    var _this=this;
+    // 检查用户登录状态的
+    let session=wx.getStorageSync("sessionID");
+    if(session==""){
+      wx.login({
+        success: function (res) {
+          if (res.errMsg == "login:ok") {
+            wx.request({
+              url: 'https://www.xiaodaofls.com/index.php/index/session3d',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              dataType: "json",
+              data: { code: res.code },
+              method: 'POST',
+              success: function (res) {
+                if (res.data) {
+                  wx.setStorage({
+                    key: 'sessionID',
+                    data: res.data,
+                  })
+                }
+              },
+              fail: function () {
+                console.log('出错了');
+              }
+            })
+          }
+        }
+      })
+    }
+  },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
   }
 })

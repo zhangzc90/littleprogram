@@ -1,0 +1,51 @@
+<template name="info">
+    <!--box  -->
+  <view class='box'>
+  <!--基本信息  -->
+    <view class="base">
+      <view class="b-left">
+        <view class="name">
+          <label>{{name}}</label>
+        </view>
+        <view class="job">{{position}}</view>
+      </view>
+      <view class="headimg">
+          <image src="{{headimg}}" background-size="cover"></image>
+      </view>
+    </view>
+    <view class="detail">
+      <view class="ditem">
+        <image model="widthFix"  src="../image/phone.png"></image>
+        <text>{{tel}}</text>
+      </view>
+      <view class="ditem">
+        <image model="widthFix"  src="../image/add.png"></image>
+        <text>{{company}}</text>
+      </view>
+      <view class="ditem">
+        <image model="widthFix" src="../image/mail.png"></image>
+        <text>{{email}}</text>
+      </view>
+    </view>
+  </view>
+  <!--具体信息  -->
+  <view class="other">
+    <view class="item">
+      <label>所属行业</label>
+      <text>{{trade}}</text>
+    </view>
+    <view class="item">
+      <label>所在地域</label>
+      <text>{{area}}</text>
+    </view>
+    <view class="item">
+      <label>公司地址</label>
+      <text>{{address}}</text>
+    </view>
+  </view>
+
+  <view class="map">
+    <label>公司位置</label>
+     <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" bindtap='openNavi' /> 
+  </view>
+</template>

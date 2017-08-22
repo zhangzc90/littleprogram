@@ -1,13 +1,8 @@
-/**index.wxss**/
+/* pages/card/card.wxss */
 @import "../template/info.wxss";
-.btn{
-  padding: 20rpx 10rpx;
-}
-.btn1{
-  margin-top: 30rpx;
-}
 .btn button{
    width: 90%;
    /* line-height: 2; */
    font-size: 36rpx;
+   margin: 30rpx auto;
 }

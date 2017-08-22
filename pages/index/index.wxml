@@ -1,52 +1,11 @@
+<import src="/pages/template/info.wxml"/>
 <!--index.wxml-->
 <view class="container">
-<!--box  -->
-  <view class='box'>
-  <!--基本信息  -->
-    <view class="base">
-      <view class="b-left">
-        <view class="name">
-          <label>周好伟</label>
-        </view>
-        <view class="job">总经理</view>
-      </view>
-      <view class="headimg">
-          <image src="http://wx.qlogo.cn/mmopen/sice1iaSYDKXphkPmw1UNHc7BFaKzhuntQt6B80jFnoBlbnX8Sz0wQgmqO1UEic3Z5DGPKdkGmIqrBV2uhmJ6jfho0BticKHQ4wL/132" background-size="cover"></image>
-      </view>
-    </view>
-    <view class="detail">
-      <view class="ditem">
-        <image model="widthFix"  src="../image/phone.png"></image>
-        <text>17703813226</text>
-      </view>
-      <view class="ditem">
-        <image model="widthFix"  src="../image/add.png"></image>
-        <text>北京容与视觉设计郑州分公司</text>
-      </view>
-      <view class="ditem">
-        <image model="widthFix" src="../image/mail.png"></image>
-        <text>674058081@qq.com</text>
-      </view>
-    </view>
+  <template is='info' data="{{...userInfo}}"></template>
+  <view class="btn btn1">
+   <button type="primary" open-type="share">发名片</button>
   </view>
-  <!--具体信息  -->
-  <view class="other">
-    <view class="item">
-      <label>所属行业</label>
-      <text>视觉设计/品牌策划</text>
-    </view>
-    <view class="item">
-      <label>所在地域</label>
-      <text>河南·郑州</text>
-    </view>
-    <view class="item">
-      <label>公司地址</label>
-      <text>金水区国基路国家知识产权产业设计园</text>
-    </view>
-  </view>
-
-  <view class="map">
-    <label>公司位置</label>
-    <map longitude="113.6721900000" latitude="34.8199200000" markers="{{markers}}" bindtap='openNavi' />
+  <view class="btn">
+     <button type="default" bindtap="editCard">编辑名片</button>
   </view>
 </view>

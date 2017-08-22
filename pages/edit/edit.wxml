@@ -1,0 +1,53 @@
+<form bindsubmit="formData">
+  <view class="part1">
+    <view class="headimg">
+      <image src="{{headimg}}"></image>
+    </view>
+    <view class="text">
+      <view class="name">
+        <input name="name" type="text" placeholder="请输入您的姓名" value="{{userInfo.name}}"/>
+      </view>
+      <view class="tel">
+        <input name="tel" type="number" placeholder="手机号码" value="{{userInfo.tel}}"/>
+      </view>
+    </view>
+  </view>
+  <view class="part2">
+    <view class="item">
+      <label>职位</label>
+      <input name="position" type="text" placeholder="请输入您的职位" value="{{userInfo.position}}"/>
+    </view>
+    <view class="item">
+      <label>邮箱</label>
+      <input name="email" type="text" placeholder="请输入您的邮箱" value="{{userInfo.email}}"/>
+    </view>
+    <view class="item">
+      <label>公司名称</label>
+      <input name="company" type="text" placeholder="请输入您的公司名称" value="{{userInfo.company}}"/>
+    </view>
+    <view class="item">
+      <label>所属行业</label>
+      <input name="trade" type="text" placeholder="请输入您的行业" value="{{userInfo.trade}}"/>
+    </view>
+    <view class="item">
+      <label>所属地域</label>
+      <!-- <input name="area" type="text" placeholder="请输入您公司所在的地"/> -->
+      <picker mode="region" bindchange="chooseArea" >
+        <view class="region">
+         {{area}}
+        </view>
+      </picker>
+    </view>
+    <view class="item">
+      <label>公司地址</label>
+      <input name="address" type="text" placeholder="请输入您公司详细地址" value="{{userInfo.address}}"/>
+    </view>
+  </view>
+  <view class="maps">
+     <label>公司地图</label>
+     <map class="map" name="map" bindtap="chooseLocation" latitude="{{map.latitude}}" longitude="{{map.longitude}}" markers="{{map.markers}}"/>
+  </view>
+  <view class="btn">
+    <button type="primary" form-type="submit">保存我的名片</button>
+  </view>
+</form>

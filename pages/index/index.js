@@ -3,28 +3,42 @@
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
+    sessionID: "",  
+    // 分享操作参数
     share:{
       title:'我的名片',
-      path:'/pages/index/index',
+      path:'/pages/card/card',
     },
-    markers:[
-      {
-        iconPath:'../image/mark.png',
-        id:1,
-        latitude: 34.8199300000,
-        longitude: 113.6723900000,
-        callout:{
-          content:'北京容与视觉设计郑州分公司',
-          borderRadius:5,
-          padding:5,
-          bgColor:'#ffffff',
-          color:'#000000',
-          display:'ALWAYS'
-        }
-      },
+    // 名片信息
+    userInfo:{
+      name:"",
+      position:"",
+      tel:"",
+      company:"",
+      email:"",
+      area:"",
+      address:"",
+      trade:"",
+      headimg:"",
+      longitude:"",
+      latitude:"",
+      markers: [
+        {
+          iconPath: '../image/mark.png',
+          id: 1,
+          latitude:"" ,
+          longitude: "",
+          callout: {
+            content: '',
+            borderRadius: 5,
+            padding: 5,
+            bgColor: '#ffffff',
+            color: '#000000',
+            display: 'ALWAYS'
+          }
+        },
       ],
+    }
   },
   //事件处理函数
   bindViewTap: function() {
@@ -33,30 +47,101 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-    })
+    var _this=this;
+    // 微信登录获取到用户的openid
+    app.userLogin()
+    // 获取sessionID
+    let session=wx.getStorageSync("sessionID")
+    // 获取用户信息
+    _this.getUserInfo(session);
+   
   },
+  onShow:function(){
+    this.onLoad();
+  },
+
+
+  // 分享设置
   onShareAppMessage:function(){
     return{
       title:this.data.share.title,
       path:this.data.share.path,
-      success:function(res){
-        console.log(res);
-      }
+      success:function(res){}
     }
   },
+  // 打开地图
   openNavi:function(){
+    var _this=this;
     wx.openLocation({
-      latitude: 34.8199300000,
-      longitude: 113.6723900000,
-      scale:28
+      latitude: _this.data.userInfo.latitude,
+      longitude: _this.data.userInfo.longitude,
+      scale:28,
+      complete:function(){
+        console.log(this.data);
+      }
+    })  
+  },
+
+  // 编辑名片
+  editCard:function(){
+    wx.navigateTo({
+      url: '/pages/edit/edit',
+    })
+  },
+  // 获取用户信息
+  getUserInfo:function(session){   
+    var _this = this
+    wx.showLoading({
+      title: '请求数据中',
+    });
+    wx.request({
+      url: 'https://www.xiaodaofls.com/index.php/index/getSelfInfo',
+      header:{
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:"POST",
+      data: { "sessionID": session},
+      success:function(res){
+        _this.setData({
+          "share":{
+            title:res.data.name+"的名片",
+            path:"/pages/card/card?uid="+res.data.uid
+          },
+          userInfo: {
+            name: res.data.name,
+            position: res.data.position,
+            tel: res.data.tel,
+            company: res.data.company,
+            email: res.data.email,
+            area: res.data.area,
+            address: res.data.address,
+            trade: res.data.trade,
+            headimg: res.data.headimg,
+            longitude: res.data.map.markers[0]['longitude'],
+            latitude: res.data.map.markers[0]['latitude'],
+            markers: [
+              {
+                iconPath: '../image/mark.png',
+                id: 1,
+                latitude: res.data.map.markers[0]['latitude'],
+                longitude: res.data.map.markers[0]['longitude'],
+                callout: {
+                  content: res.data.company,
+                  borderRadius: 5,
+                  padding: 5,
+                  bgColor: '#ffffff',
+                  color: '#000000',
+                  display: 'ALWAYS'
+                }
+              },
+            ],
+          }
+        });
+        wx.hideLoading();
+      },
+      fail:function(res){
+
+      }
     })
   }
 })

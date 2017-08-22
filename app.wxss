@@ -1,4 +1,13 @@
 /**app.wxss**/
+page{
+  background: #f2f2f2;
+  font-size: 28rpx;
+  font-family: '微软雅黑';
+}
+image{
+  width: auto;
+  height: auto;
+}
 .container {
   height: 100%;
   /* display: flex; */

@@ -1,0 +1,9 @@
+<!--pages/card/card.wxml-->
+<import src="../template/info.wxml"/>
+<template is="info" data="{{...userInfo}}"></template>
+<view class="btn">
+     <button type="warn" bindtap="saveCard">保存到名片夹</button>
+  </view>
+ <view class="btn">
+     <button type="primary" bindtap="createCard">生成我的名片</button>
+  </view>

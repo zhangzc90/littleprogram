@@ -1,0 +1,73 @@
+/* edit.wxss */
+image{
+  width: auto;
+  height: auto;
+}
+.part1{
+  background: #ffffff;
+  padding:10rpx 20rpx;
+  margin: 20rpx 0;
+  display: flex;
+}
+.headimg image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 5rpx;
+  line-height: 1.5;
+}
+.text{
+  flex: 1;
+  padding: 0 0 0 35rpx ;
+}
+.tel{
+  border-top: 1rpx solid #f3f3f3;
+}
+input{
+  padding: 5rpx 0;
+  font-family: "微软雅黑";
+}
+
+
+.part2{
+  padding: 10rpx;
+  background: #ffffff;
+}
+.item{
+  display: flex;
+  background: #ffffff;
+  padding: 20rpx;
+}
+.item:not(:last-child){
+  border-bottom: 1rpx solid #f3f3f3;
+}
+.item label{
+  line-height: 2.2;
+  width: 116rpx;
+}
+.item input,.item picker{
+  margin-left: 30rpx;
+  flex: 1;
+}
+
+.maps{
+  background: #ffffff;
+  padding: 10rpx 30rpx;
+  margin-top: 20rpx;
+}
+.map{
+  width: 100%;
+  padding-top:10rpx; 
+}
+
+.btn{
+  padding: 50rpx 0;
+}
+.btn button{
+  width: 90%;
+  font-size: 36rpx;
+}
+
+.region{
+  line-height: 2.2;
+  color: #808080;
+}

@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+   <view wx:for="{{contactList}}" class="list"> 
+    <view class="item" data-uid="{{item.uid}}" bindtap="openDetail">
+      <view class="headimg">
+         <image src="{{item.headimg}}" background-size="cover"></image>
+      </view>
+      <view class="detail">
+        <view class="name">{{item.name}}</view>
+        <view class="company">{{item.company}}</view>
+      </view>
+      <view class="time">{{item.time}}</view>
+    </view>
+   </view> 
+</view>
