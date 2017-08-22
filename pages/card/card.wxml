@@ -2,8 +2,11 @@
 <import src="../template/info.wxml"/>
 <template is="info" data="{{...userInfo}}"></template>
 <view class="btn">
-     <button type="warn" bindtap="saveCard">保存到名片夹</button>
-  </view>
- <view class="btn">
-     <button type="primary" bindtap="createCard">生成我的名片</button>
-  </view>
+  <button type="default" bindtap="callNumber">拨打电话</button>
+</view>
+<view class="btn" wx:if="{{collect!=1}}">
+  <button type="warn" bindtap="saveCard">保存到名片夹</button>
+</view>
+<view class="btn">
+  <button type="primary" bindtap="createCard">生成我的名片</button>
+</view>

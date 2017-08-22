@@ -50,14 +50,12 @@ Page({
     var _this=this;
     // 微信登录获取到用户的openid
     app.userLogin()
-    // 获取sessionID
-    let session=wx.getStorageSync("sessionID")
-    // 获取用户信息
-    _this.getUserInfo(session);
-   
   },
   onShow:function(){
-    this.onLoad();
+    // 获取sessionID
+    let session = wx.getStorageSync("sessionID")
+    // 获取用户信息
+    this.getUserInfo(session);
   },
 
 

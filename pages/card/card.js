@@ -6,25 +6,25 @@ Page({
    */
   data: {
     userInfo: {
-      name: "张小超",
-      position: "技术",
-      tel: "17703813226",
-      company: "北京容与视觉设计郑州分公司",
-      email: "674058081@qq.com",
-      area: "河南郑州",
-      address: "金水区国基路国家知识产权产业设计园",
-      trade: "视觉设计/品牌策划",
-      headimg: "http://wx.qlogo.cn/mmopen/sice1iaSYDKXphkPmw1UNHc4PLNlfr1GvlhocD7Fl5BIONKCMofzmnA44Z4ImPU0RabmZsZvjo5H7IzoXwRSiafucjXicvOBnOSib/132",
-      longitude: "113.6721900000",
-      latitude: "34.8199200000",
+      name: "",
+      position: "",
+      tel: "",
+      company: "",
+      email: "",
+      area: "",
+      address: "",
+      trade: "",
+      headimg: "",
+      longitude: "",
+      latitude: "",
       markers: [
         {
           iconPath: '../image/mark.png',
           id: 1,
-          latitude: 34.8199300000,
-          longitude: 113.6723900000,
+          latitude: '',
+          longitude: '',
           callout: {
-            content: '北京容与视觉设计郑州分公司',
+            content: '',
             borderRadius: 5,
             padding: 5,
             bgColor: '#ffffff',
@@ -43,7 +43,8 @@ Page({
     let session = wx.getStorageSync("sessionID")
     // 获取用户信息
     this.setData({
-      uid: options.uid
+      uid: options.uid,
+      collect:options.collect
     })
     this.getUserInfo(session);   
   },
@@ -108,17 +109,38 @@ Page({
   },
   // 保存到我的名片夹
   saveCard:function(){
+    let _this=this;
     let session=wx.getStorageSync("sessionID");
+    wx.showLoading({
+      title: '数据保存中',
+      mask:true
+    })
     wx.request({
-      url: '',
+      url: 'https://www.xiaodaofls.com/index.php/index/saveOtherInfo',
       header:{
         'content-type': 'application/x-www-form-urlencoded'
       },
-      methoad:"POST",
-      data:{},
+      method:"POST",
+      data:{"sessionID":session,"uid":_this.data.uid},
       success:function(res){
-
+        if(res.data==1){
+          wx.hideLoading();
+          wx.showToast({
+            title: '保存成功',
+            success:function(){
+              wx.switchTab({
+                url: '/pages/collect/collect',
+              })
+            }
+          })
+        }
       }
+    })
+  },
+  callNumber:function(){
+    let _this=this;
+    wx.makePhoneCall({
+      phoneNumber: _this.data.userInfo.tel,
     })
   }
 })
