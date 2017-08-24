@@ -125,7 +125,10 @@ Page({
       },
       method: "POST",
       data: { "sessionID": session },
-      success: function (res) {
+      success: function (res) {  
+        wx.hideLoading();     
+        if(!res.data)
+          return;
         _this.setData({
           "userInfo": {
             name: res.data.name,
@@ -135,6 +138,7 @@ Page({
             email: res.data.email,
             area: res.data.area,
             address: res.data.address,
+            intro:res.data.intro,
             trade: res.data.trade,
             headimg: res.data.headimg,      
           },
@@ -156,8 +160,7 @@ Page({
               display: 'ALWAYS'
             }
           },
-        });
-        wx.hideLoading();
+        });       
       },
       fail: function (res) {
 

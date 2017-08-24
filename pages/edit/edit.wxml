@@ -42,6 +42,10 @@
       <label>公司地址</label>
       <input name="address" type="text" placeholder="请输入您公司详细地址" value="{{userInfo.address}}"/>
     </view>
+    <view class="item">
+       <label>公司介绍</label>
+      <textarea name="intro" type="text" placeholder="请输入您公司的介绍信息" value="{{userInfo.intro}}"/>
+    </view>
   </view>
   <view class="maps">
      <label>公司地图</label>

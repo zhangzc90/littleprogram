@@ -41,9 +41,28 @@
     <view class="item">
       <label>公司地址</label>
       <text>{{address}}</text>
+    </view>  
+  </view>
+  <view class="map">
+    <view class="intro">
+      <text>{{intro==null?"":intro}}</text>  
     </view>
   </view>
-
+  <view class="map">
+    <view><label>公司客户</label></view>
+    <view class='logos'>
+      <image src="/pages/image/xhxb.png"></image>
+      <image src="/pages/image/lsyp.png"></image>
+      <image src="/pages/image/yzw.png"></image>
+      <image src="/pages/image/wy.png"></image>
+    </view>
+    <view class='logos'>
+      <image src="/pages/image/nhw.png"></image>
+      <image src="/pages/image/ereb.png"></image>
+      <image src="/pages/image/sjs.png"></image>
+      <image src="/pages/image/dwc.png"></image>
+    </view>
+  </view>
   <view class="map">
     <label>公司位置</label>
      <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" bindtap='openNavi' /> 

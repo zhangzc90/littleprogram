@@ -18,6 +18,7 @@ Page({
       email:"",
       area:"",
       address:"",
+      intro:"",
       trade:"",
       headimg:"",
       longitude:"",
@@ -74,7 +75,7 @@ Page({
       latitude: _this.data.userInfo.latitude,
       longitude: _this.data.userInfo.longitude,
       scale:28,
-      complete:function(){
+      complete:function()  {
         console.log(this.data);
       }
     })  
@@ -100,6 +101,9 @@ Page({
       method:"POST",
       data: { "sessionID": session},
       success:function(res){
+        wx.hideLoading();
+        if(!res.data)
+          return;
         _this.setData({
           "share":{
             title:res.data.name+"的名片",
@@ -113,6 +117,7 @@ Page({
             email: res.data.email,
             area: res.data.area,
             address: res.data.address,
+            intro:res.data.intro,
             trade: res.data.trade,
             headimg: res.data.headimg,
             longitude: res.data.map.markers[0]['longitude'],
@@ -135,7 +140,7 @@ Page({
             ],
           }
         });
-        wx.hideLoading();
+       
       },
       fail:function(res){
 

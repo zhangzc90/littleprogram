@@ -72,3 +72,18 @@
   font-size: 30rpx;
   padding-left: 10rpx;
 }
+.intro{
+  padding: 20rpx;
+}
+.intro text{
+  line-height: 1.5;
+}
+.logos{
+  padding-top: 20rpx;
+  text-align: center;
+}
+.logos image{
+  width: 130rpx;
+  height: 130rpx;
+  padding: 15rpx;
+}

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    uid:"",
     userInfo: {
       name: "",
       position: "",
@@ -13,6 +14,7 @@ Page({
       email: "",
       area: "",
       address: "",
+      intro:"",
       trade: "",
       headimg: "",
       longitude: "",
@@ -48,6 +50,12 @@ Page({
     })
     this.getUserInfo(session);   
   },
+  onShareAppMessage:function(){
+    return{
+      title:this.data.userInfo.name+"的名片",
+      path:"/pages/card/card?uid="+this.data.uid,
+    }
+  },
   // 获取用户信息
   getUserInfo: function (session) {
     var _this = this
@@ -62,7 +70,11 @@ Page({
       method: "POST",
       data: { "uid": _this.data.uid },
       success: function (res) {
+        wx.hideLoading();
+        if(!res.data)
+          return;
         _this.setData({
+          uid:res.data.uid,
           userInfo: {
             name: res.data.name,
             position: res.data.position,
@@ -71,6 +83,7 @@ Page({
             email: res.data.email,
             area: res.data.area,
             address: res.data.address,
+            intro:res.data.intro,
             trade: res.data.trade,
             headimg: res.data.headimg,
             longitude: res.data.map.markers[0]['longitude'],
@@ -93,7 +106,7 @@ Page({
             ],
           }
         });
-        wx.hideLoading();
+       
       },
       fail: function (res) {
 

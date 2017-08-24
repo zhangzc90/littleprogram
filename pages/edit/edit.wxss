@@ -44,7 +44,7 @@ input{
   line-height: 2.2;
   width: 116rpx;
 }
-.item input,.item picker{
+.item input,.item picker,.item textarea{
   margin-left: 30rpx;
   flex: 1;
 }

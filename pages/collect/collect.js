@@ -40,6 +40,8 @@ Page({
       data:{'sessionID':_this.data.sessionID},
       success:function(res){
         wx.hideLoading();
+        if(!res.data)
+          return;       
         let datas=[];
         for( var item of res.data){
           datas.push(item);
