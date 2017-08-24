@@ -1,4 +1,5 @@
 // pages/card/card.js
+var app = getApp();
 Page({
 
   /**
@@ -42,13 +43,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let session = wx.getStorageSync("sessionID")
-    // 获取用户信息
+    // 获取GET信息
     this.setData({
       uid: options.uid,
-      collect:options.collect
-    })
-    this.getUserInfo(session);   
+      collect: options.collect
+    }) 
+    
+    let _this=this;
+    app.userLogin(function(session){
+      _this.getUserInfo(session);
+    });
   },
   onShareAppMessage:function(){
     return{
@@ -122,6 +126,7 @@ Page({
   },
   // 保存到我的名片夹
   saveCard:function(){
+   
     let _this=this;
     let session=wx.getStorageSync("sessionID");
     wx.showLoading({
@@ -150,6 +155,7 @@ Page({
       }
     })
   },
+  // 拨打电话
   callNumber:function(){
     let _this=this;
     wx.makePhoneCall({

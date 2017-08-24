@@ -23,7 +23,7 @@ App({
     }
   },
   //获取用户的登录状态 
-  userLogin:function(){
+  userLogin:function(cb){
     var _this=this;
     // 检查用户登录状态的
     let session=wx.getStorageSync("sessionID");
@@ -45,6 +45,7 @@ App({
                     key: 'sessionID',
                     data: res.data,
                   })
+                  typeof cb == "function" &&cb(res.data);
                 }
               },
               fail: function () {
@@ -54,6 +55,8 @@ App({
           }
         }
       })
+    }else{
+      typeof cb == "function" &&cb(session);
     }
   },
 

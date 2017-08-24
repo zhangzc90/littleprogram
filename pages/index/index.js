@@ -49,17 +49,14 @@ Page({
   },
   onLoad: function () {
     var _this=this;
-    // 微信登录获取到用户的openid
-    app.userLogin()
+    // 微信登录获取到用户的openid  
   },
   onShow:function(){
-    // 获取sessionID
-    let session = wx.getStorageSync("sessionID")
-    // 获取用户信息
-    this.getUserInfo(session);
+    let _this=this;
+    app.userLogin(function(session){
+      _this.getUserInfo(session);
+    });
   },
-
-
   // 分享设置
   onShareAppMessage:function(){
     return{
@@ -88,7 +85,7 @@ Page({
     })
   },
   // 获取用户信息
-  getUserInfo:function(session){   
+  getUserInfo:function(session){
     var _this = this
     wx.showLoading({
       title: '请求数据中',
